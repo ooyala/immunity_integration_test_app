@@ -13,11 +13,12 @@ end
 desc "start the server"
 task :start do
   puts "Starting #{app}."
-  `nohup ./run_server.sh #{app} 2>/dev/null > /dev/null &`
+  `nohup ./run_server.sh #{app}.run_server 2>/dev/null > /dev/null &`
 end
 
 desc "stop the server"
 task :stop do
-  process_ids = `ps ax | grep #{app} | grep -v grep`.split("\n").map { |line| line.split(" ")[0].to_i }
+  next
+  process_ids = `ps ax | grep #{app}.run_server | grep -v grep`.split("\n").map { |line| line.split(" ")[0].to_i }
   process_ids.each { |id| `kill -9 #{id} 2> /dev/null` if id > 0 }
 end
