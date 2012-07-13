@@ -1,1 +1,1 @@
-bundle exec rackup --port 3105 config.ru
+bundle exec rackup --port 3105 config.ru -O immunity_integration_test_app
